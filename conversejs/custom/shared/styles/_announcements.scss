@@ -1,0 +1,59 @@
+/*
+ * SPDX-FileCopyrightText: 2024 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+// FIXME: this should be with the livechat-announcement plugin.
+// But for now, there is no way to build scss from there.
+
+#conversejs {
+  .message.chat-msg {
+    &.livechat-announcement {
+      --livechat-announcement-color: #000;
+      --livechat-announcement-background-color: #dbf2d8;
+      --livechat-announcement-border-color: #2ab218;
+    }
+
+    &.livechat-highlight {
+      --livechat-announcement-color: #000;
+      --livechat-announcement-background-color: #dce8fa;
+      --livechat-announcement-border-color: #3075e5;
+    }
+
+    &.livechat-warning {
+      --livechat-announcement-color: #000;
+      --livechat-announcement-background-color: #fadede;
+      --livechat-announcement-border-color: #e03e3e;
+    }
+
+    &.livechat-announcement,
+    &.livechat-highlight,
+    &.livechat-warning {
+      converse-chat-message-body {
+        border: 2px solid var(--livechat-announcement-border-color);
+        color: var(--livechat-announcement-color);
+        background-color: var(--livechat-announcement-background-color);
+        min-width: 50%;
+        padding: 1em;
+      }
+    }
+  }
+
+  .livechat-announcements-form {
+    label {
+      // only for screen readers
+      border: 0 !important;
+      clip: rect(1px, 1px, 1px, 1px) !important;
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -webkit-clip-path: inset(50%) !important;
+      clip-path: inset(50%) !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      padding: 0 !important;
+      position: absolute !important;
+      width: 1px !important;
+      white-space: nowrap !important;
+    }
+  }
+}

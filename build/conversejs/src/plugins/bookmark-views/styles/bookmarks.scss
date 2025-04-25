@@ -1,0 +1,16 @@
+.conversejs {
+    #controlbox {
+        .bookmarks-toggle, .bookmarks-toggle .fa {
+            color: var(--groupchats-header-color) !important;
+            &:hover {
+                color: var(--chatroom-head-bg-color-dark) !important;
+            }
+        }
+    }
+}
+
+converse-bookmarks {
+    .list-item-link {
+        padding: 0 1em;
+    }
+}

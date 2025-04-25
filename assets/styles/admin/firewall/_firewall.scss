@@ -1,0 +1,98 @@
+/*
+ * SPDX-FileCopyrightText: 2024 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+/* stylelint-disable custom-property-pattern */
+
+@use "sass:color";
+@use "../../variables";
+
+.peertube-plugin-livechat-admin-firewall {
+  h1 {
+    padding-top: 40px;
+
+    /* See Peertube sub-menu-h1 mixin */
+    font-size: 1.3rem;
+    border-bottom: 2px solid var(--bg-secondary-400, var(--greyBackgroundColor));
+    padding-bottom: 15px;
+  }
+
+  textarea[name^="_content_"] {
+    min-height: 10rem;
+  }
+
+  input[type="submit"],
+  input[type="reset"],
+  button[type="submit"],
+  button[type="reset"] {
+    // Peertube rounded-line-height-1-5 mixins
+    line-height: variables.$button-calc-line-height;
+
+    // Peertube peertube-button mixin
+    padding: 4px 13px;
+    border: 0;
+    font-weight: variables.$font-semibold;
+    border-radius: 3px !important;
+    text-align: center;
+    cursor: pointer;
+    font-size: variables.$button-font-size;
+  }
+
+  input[type="submit"],
+  button[type="submit"] {
+    &,
+    &:active,
+    &.active,
+    &:focus {
+      color: var(--on-primary, #fff);
+      background-color: var(--primary, var(--mainColor));
+      border: 1px solid var(--primary, var(--mainColor));
+    }
+
+    &:hover {
+      color: var(--on-primary, #fff);
+      background-color: var(--primary-400, var(--mainHoverColor));
+    }
+
+    &[disabled] {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  }
+
+  input[type="reset"],
+  button[type="reset"] {
+    color: var(--fg, var(--mainForegroundColor));
+    background-color: transparent;
+    border: 1px solid var(--bg-secondary-500, var(--inputBorderColor)) !important;
+
+    &:active,
+    &.active,
+    &:focus,
+    &:focus-visible {
+      color: var(--fg, var(--mainForegroundColor));
+      background-color: var(--bg-secondary-500, var(--inputBorderColor));
+      border-color: var(--bg-secondary-500, var(--inputBorderColor));
+    }
+
+    &:hover {
+      color: var(--fg, var(--mainForegroundColor));
+      background-color: var(--bg-secondary-450, var(--inputBorderColor));
+    }
+
+    &[disabled] {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+  }
+
+  .peertube-livechat-admin-firewall-col-name {
+    width: 25%;
+  }
+
+  .peertube-livechat-admin-firewall-col-content {
+    width: 65%;
+  }
+}

@@ -1,0 +1,51 @@
+/*
+ * SPDX-FileCopyrightText: 2024 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+.conversejs {
+  .livechat-converse-muc-app {
+    border: var(--occupants-border-left);
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 0 1 100%;
+    padding: var(--occupants-padding);
+
+    .livechat-converse-muc-app-header {
+      column-gap: 0.25em;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      font-family: var(--heading-font);
+      padding-left: 0;
+      margin-right: 1em;
+      width: 100%;
+
+      h5 {
+        color: var(--groupchats-header-color-dark);
+        display: inline;
+        flex-grow: 2;
+      }
+
+      .livechat-converse-muc-app-close {
+        background: unset;
+        border: 0;
+      }
+    }
+
+    .livechat-converse-muc-app-body {
+      padding-right: 2em; // let some place for the scrollbar.
+      overflow-y: auto;
+    }
+  }
+
+  &[livechat-converse-root-width="small"],
+  &[livechat-converse-root-width="medium"] {
+    converse-muc-chatarea .livechat-converse-muc-app:not(.hidden) ~ * {
+      // on small and medium width, we hide all subsequent siblings of the app
+      // (when app is not hidden)
+      display: none !important;
+    }
+  }
+}

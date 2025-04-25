@@ -1,0 +1,25 @@
+{
+  "name": "@converse/openpromise",
+  "version": "0.0.1",
+  "description": "An open promise is a promise which can be resolved or rejected outside of its closure",
+  "main": "openpromise.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conversejs/openpromise.git"
+  },
+  "keywords": [
+    "promise"
+  ],
+  "author": "JC Brand",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/conversejs/openpromise/issues"
+  },
+  "homepage": "https://github.com/conversejs/openpromise#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0"
+  }
+}

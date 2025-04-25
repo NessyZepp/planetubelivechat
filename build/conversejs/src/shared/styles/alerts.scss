@@ -1,0 +1,34 @@
+.conversejs {
+
+    .alert-info, .alert-danger {
+        h3 {
+            color: var(--background);
+            font-size: large;
+        }
+
+        .modal-title {
+            font-size: 110%;
+        }
+
+        .close {
+            color: var(--background);
+        }
+    }
+
+    .alert-info {
+        color: var(--background);
+        background-color: var(--info-color);
+        border-color: var(--info-dark);
+    }
+
+    .alert-danger {
+        .disconnect-msg {
+            color: var(--background) !important;
+        }
+
+        color: var(--background);
+        border-color: var(--danger-color-dark);
+        background-color: var(--danger-color);
+    }
+
+}

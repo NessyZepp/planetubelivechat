@@ -1,0 +1,164 @@
+{
+  "name": "planetubelivechat",
+  "description": "PlaneTube plugin livechat: Planetube's fork of the peertube livechat plugin by John Livingston, ...",
+  "version": "12.0.3",
+  "license": "AGPL-3.0",
+  "author": {
+    "name": "NessyZepp",
+    "url": "https://github.com/NessyZepp"
+  },
+  "bugs": "https://github.com/NessyZepp/planetubelivechat",
+  "clientScripts": [
+    {
+      "script": "dist/client/common-client-plugin.js",
+      "scopes": [
+        "common"
+      ]
+    },
+    {
+      "script": "dist/client/admin-plugin-client-plugin.js",
+      "scopes": [
+        "admin-plugin"
+      ]
+    }
+  ],
+  "css": [
+    "dist/assets/styles/style.css"
+  ],
+  "dependencies": {
+    "@xmpp/jid": "^0.13.1",
+    "async": "^3.2.6",
+    "decache": "^4.6.2",
+    "escape-html": "^1.0.3",
+    "got": "^11.8.6",
+    "http-proxy": "^1.18.1",
+    "log-rotate": "^0.2.8",
+    "openid-client": "^5.7.0",
+    "validate-color": "^2.2.4",
+    "xmppjs-chat-bot": "^0.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@lit-labs/motion": "^1.0.7",
+    "@lit/context": "^1.1.3",
+    "@lit/task": "^1.0.1",
+    "@peertube/feed": "^5.1.3",
+    "@peertube/peertube-types": "^5.2.0",
+    "@stylistic/eslint-plugin": "^2.11.0",
+    "@tsconfig/node16": "^16.1.3",
+    "@types/async": "^3.2.24",
+    "@types/escape-html": "^1.0.4",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^5.0.0",
+    "@types/got": "^9.6.12",
+    "@types/http-proxy": "^1.17.15",
+    "@types/node": "^16.18.121",
+    "@types/winston": "^2.4.4",
+    "@types/xmpp__jid": "^1.3.5",
+    "@typescript-eslint/parser": "^8.4.0",
+    "commander": "^12.1.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^8.57.1",
+    "eslint-config-love": "^84.1.1",
+    "eslint-plugin-lit": "^1.15.0",
+    "globals": "^15.13.0",
+    "lit": "^3.2.1",
+    "lit-analyzer": "^2.0.3",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.81.1",
+    "sharp": "^0.33.5",
+    "stylelint": "^16.11.0",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "svgo": "^3.3.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.17.0",
+    "yaml": "^2.6.1"
+  },
+  "engine": {
+    "peertube": ">=5.2.0"
+  },
+  "engines": {
+    "npm": ">=7"
+  },
+  "homepage": "https://planetube.livechat",
+  "repository": "github:NessyZepp/planetubelivechat",
+  "keywords": [
+    "peertube",
+    "plugin"
+  ],
+  "library": "./dist/server/main.js",
+  "scripts": {
+    "clean": "rm -rf dist/* build/* support/documentation/content/translations/* support/documentation/i18n/*",
+    "clean:light": "rm -rf dist/* support/documentation/content/translations/* support/documentation/i18n/*",
+    "prepare": "npm run clean && npm run build",
+    "build:converse": "bash conversejs/build-conversejs.sh",
+    "build:converse-no-loc": "bash conversejs/build-conversejs.sh no-loc",
+    "build:prosody": "bash build-prosody.sh",
+    "build:images": "mkdir -p dist/client/images && npx svgo -f assets/images/ -o dist/client/images/",
+    "build:avatars": "./build-avatars.js",
+    "check:client:tsc": "npx tsc --p client/ --noEmit --skipLibCheck && npx tsc --p conversejs/ --noemit --skipLibCheck",
+    "build:client": "node ./build-client.js --mode=production",
+    "build:server": "npx tsc --build server/tsconfig.json",
+    "build:serverconverse": "mkdir -p dist/server/conversejs && cp conversejs/index.html dist/server/conversejs/",
+    "build:prosodymodules": "mkdir -p dist/server/prosody-modules && cp -r prosody-modules/* dist/server/prosody-modules/",
+    "build:styles": "sass assets/styles:dist/assets/styles",
+    "build:languages": "node ./build-languages.js",
+    "build": "npm-run-all -s clean:light build:languages check:client:tsc -s build:client build:server build:images build:styles build:avatars build:serverconverse build:prosodymodules build:converse build:prosody",
+    "lint": "npm-run-all -s lint:script lint:lit lint:styles lint:reuse",
+    "lint:fix": "npm-run-all -s lint:script:fix lint:styles:fix",
+    "lint:script": "npx eslint .",
+    "lint:script:fix": "npx eslint . --fix",
+    "lint:lit": "npx lit-analyzer client/ conversejs/",
+    "lint:styles": "stylelint 'conversejs/**/*.scss' 'assets/styles/**/*.scss'",
+    "lint:styles:fix": "stylelint 'conversejs/**/*.scss' 'assets/styles/**/*.scss' --fix",
+    "lint:reuse": "reuse lint",
+    "show:npmfiles": "npx npm-packlist",
+    "doc:translate": "bash doc-translate.sh"
+  },
+  "staticDirs": {
+    "static": "dist/client/static",
+    "conversejs": "dist/client/conversejs/",
+    "images": "dist/client/images/",
+    "settings": "dist/client/settings"
+  },
+  "translations": {
+    "ar": "./dist/languages/ar.json",
+    "is": "./dist/languages/is.json",
+    "fa-IR": "./dist/languages/fa.json",
+    "vi-VN": "./dist/languages/vi.json",
+    "hu-HU": "./dist/languages/hu.json",
+    "th-TH": "./dist/languages/th.json",
+    "fi-FI": "./dist/languages/fi.json",
+    "nl-NL": "./dist/languages/nl.json",
+    "gd": "./dist/languages/gd.json",
+    "el-GR": "./dist/languages/el.json",
+    "es-ES": "./dist/languages/es.json",
+    "oc": "./dist/languages/oc.json",
+    "pt-BR": "./dist/languages/pt-BR.json",
+    "pt-PT": "./dist/languages/pt-PT.json",
+    "sv-SE": "./dist/languages/sv.json",
+    "ru-RU": "./dist/languages/ru.json",
+    "fr-FR": "./dist/languages/fr.json",
+    "ja-JP": "./dist/languages/ja.json",
+    "eu-ES": "./dist/languages/eu.json",
+    "ca-ES": "./dist/languages/ca.json",
+    "gl-ES": "./dist/languages/gl.json",
+    "cs-CZ": "./dist/languages/cs.json",
+    "hr": "./dist/languages/hr.json",
+    "eo": "./dist/languages/eo.json",
+    "de-DE": "./dist/languages/de.json",
+    "it-IT": "./dist/languages/it.json",
+    "uk-UA": "./dist/languages/uk.json",
+    "sq": "./dist/languages/sq.json",
+    "tok": "./dist/languages/tok.json",
+    "tr-TR": "./dist/languages/tr.json",
+    "nn": "./dist/languages/nn.json",
+    "nb-NO": "./dist/languages/nb.json",
+    "kab": "./dist/languages/kab.json",
+    "pl-PL": "./dist/languages/pl.json",
+    "zh-Hans-CN": "./dist/languages/zh-Hans.json",
+    "zh-Hans-TW": "./dist/languages/zh-Hant.json",
+    "sk-SK": "./dist/languages/sk.json"
+  }
+}

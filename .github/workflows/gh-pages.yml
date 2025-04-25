@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2024 John Livingston <https://www.john-livingston.fr/>
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+name: github pages
+
+on:
+  push:
+    branches:
+      - documentation  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      # FIXME: ubuntu-22.04 comes with po4a 0.66.
+      #       We need at least v0.69.
+      #       Github does not provide any other suitable image...
+      #       So... we will trick it by first installing the ubuntu package, then downloading the debian package.
+      #       Note: libsyntax-keyword-try-perl is required by 0.69, so we will also install it on the first step.
+      - name: Install po4a
+        run: sudo apt update && sudo apt install po4a libsyntax-keyword-try-perl -y
+
+      - name: Install po4a from debian bookworm version
+        run: wget http://ftp.debian.org/debian/pool/main/p/po4a/po4a_0.69-1_all.deb && sudo dpkg -i po4a_0.69-1_all.deb
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.132.2'
+          extended: true
+
+      - name: Generate documentation translations
+        run: bash ./doc-translate.sh
+
+      - name: Build
+        run: hugo --minify --baseURL='https://johnxlivingston.github.io/peertube-plugin-livechat' -s support/documentation
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/documentation'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./support/documentation/public

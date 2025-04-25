@@ -1,0 +1,23 @@
+declare function isUserPasswordValid(value: string): boolean;
+declare function isUserPasswordValidOrEmpty(value: string): boolean;
+declare function isUserVideoQuotaValid(value: string): boolean;
+declare function isUserVideoQuotaDailyValid(value: string): boolean;
+declare function isUserUsernameValid(value: string): boolean;
+declare function isUserDisplayNameValid(value: string): boolean;
+declare function isUserDescriptionValid(value: string): boolean;
+declare function isUserEmailVerifiedValid(value: any): boolean;
+declare function isUserNSFWPolicyValid(value: any): boolean;
+declare function isUserP2PEnabledValid(value: any): boolean;
+declare function isUserVideosHistoryEnabledValid(value: any): boolean;
+declare function isUserAutoPlayVideoValid(value: any): boolean;
+declare function isUserVideoLanguages(value: any): boolean;
+declare function isUserAdminFlagsValid(value: any): boolean;
+declare function isUserBlockedValid(value: any): boolean;
+declare function isUserAutoPlayNextVideoValid(value: any): boolean;
+declare function isUserAutoPlayNextVideoPlaylistValid(value: any): boolean;
+declare function isUserEmailPublicValid(value: any): boolean;
+declare function isUserNoModal(value: any): boolean;
+declare function isUserBlockedReasonValid(value: any): boolean;
+declare function isUserRoleValid(value: any): boolean;
+export { isUserVideosHistoryEnabledValid, isUserBlockedValid, isUserPasswordValid, isUserPasswordValidOrEmpty, isUserVideoLanguages, isUserBlockedReasonValid, isUserRoleValid, isUserVideoQuotaValid, isUserVideoQuotaDailyValid, isUserUsernameValid, isUserAdminFlagsValid, isUserEmailVerifiedValid, isUserNSFWPolicyValid, isUserP2PEnabledValid, isUserAutoPlayVideoValid, isUserAutoPlayNextVideoValid, isUserAutoPlayNextVideoPlaylistValid, isUserDisplayNameValid, isUserDescriptionValid, isUserEmailPublicValid, isUserNoModal };
+//# sourceMappingURL=users.d.ts.map

@@ -1,0 +1,266 @@
+/*
+ * SPDX-FileCopyrightText: 2024 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+@import "./variables";
+@import "shared/styles/index";
+@import "./peertubetheme";
+@import "./announcements";
+
+body.livechat-iframe {
+  #conversejs .chat-head {
+    // Hidding the chat-head when the plugin is displayed in an iframe
+    display: none;
+  }
+}
+
+#peertube-plugin-livechat-container #conversejs .chat-head {
+  // When besides a video, reduce the size of the toolbar.
+  padding: 0 !important;
+}
+
+#conversejs .livechat-mini-muc-bar-buttons {
+  a.primary-button {
+    // force these colors...
+    color: var(--peertube-button-foreground);
+    background-color: var(--peertube-button-background);
+  }
+}
+
+#conversejs-bg {
+  // We are using a custom template that differs from the original, this is required.
+  .converse-brand__heading {
+    img {
+      margin-top: 0.3em;
+    }
+  }
+}
+
+// Readonly mode
+body.livechat-readonly #conversejs {
+  /* stylelint-disable-next-line no-descending-specificity */
+  .chat-head,
+  .bottom-panel,
+  converse-message-actions,
+  converse-muc-sidebar {
+    display: none !important;
+  }
+}
+
+body.livechat-readonly.livechat-noscroll {
+  converse-chat-content {
+    overflow-y: hidden !important;
+  }
+
+  .message.separator,
+  .message.date-separator {
+    // also hide separators (new day, new message)
+    display: none;
+  }
+}
+
+// Viewer mode (before the user has chosen its nickname)
+.livechat-viewer-mode-content {
+  display: none;
+
+  form {
+    display: flex !important;
+    flex-flow: row wrap !important;
+    padding-bottom: 0.5em !important;
+    padding-top: 0.5em !important;
+    border-top: 1px solid var(--chatroom-head-bg-color) !important;
+    gap: 0.5em 10px;
+    align-items: baseline;
+
+    fieldset,
+    label {
+      margin-bottom: 0 !important; // replaced by the gap on .livechat-viewer-mode-content
+    }
+
+    label {
+      color: var(--text-color); // fix converseJs css that breaks this label color.
+    }
+  }
+
+  hr {
+    margin: 0;
+    background-color: var(--chatroom-head-bg-color);
+  }
+
+  .livechat-viewer-mode-external-login {
+    margin: 0.5em 0;
+    padding: 0;
+  }
+}
+
+body[livechat-viewer-mode="on"] {
+  .livechat-viewer-mode-content {
+    display: initial;
+  }
+
+  converse-muc-bottom-panel {
+    >:not(.livechat-viewer-mode-content) {
+      display: none;
+    }
+  }
+}
+
+.livechat-external-login-modal {
+  .livechat-external-login-modal-external-auth-oidc-block {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  hr {
+    background-color: var(--chatroom-head-bg-color);
+  }
+}
+
+// Transparent mode
+body.livechat-transparent {
+  // --peertube-main-background: rgba(0 0 0 / 0%) !important;
+  // --peertube-menu-background: rgba(0 0 0 / 0%) !important;
+
+  &.converse-fullscreen {
+    background-color: var(--livechat-transparent) !important;
+  }
+
+  .chat-body,
+  .conversejs .chatroom .box-flyout,
+  .conversejs .chatbox .chat-content,
+  .conversejs .chatbox .chat-content .chat-content__notifications,
+  livechat-converse-muc-poll {
+    background-color: rgba(0 0 0 / 0%) !important;
+  }
+
+  // Hide the background_logo
+  #conversejs-bg {
+    display: none !important;
+  }
+}
+
+/* Chat directly embedded in Peertube */
+body.converse-embedded {
+  .conversejs .modal {
+    // modal z-index = use same z-index as Peertube (see Peertube _variables.scss)
+    z-index: 19000;
+  }
+
+  .modal-backdrop {
+    // must be just under .modal.
+    z-index: 18999;
+  }
+}
+
+/* Chat embedded in a full client page. */
+.livechat-embed-fullpage {
+  converse-root {
+    display: block;
+    height: 90vh;
+    min-height: 400px;
+  }
+}
+
+.livechat-embed-fullpage,
+#peertube-plugin-livechat-container {
+  converse-muc-message-form {
+    // For an unknown reason, message field in truncated... so adding a bottom margin.
+    // We also add left and right margin, as Converse v11 adds a g-0 class on converse-muc-chatarea
+    margin: 0 1px 6px 5px;
+  }
+}
+
+.conversejs {
+  // Fix: for the slow mode, we use readonly instead of disabled, we must apply same CSS as ConverseJS.
+  textarea:read-only {
+    background-color: var(--chat-textarea-disabled-bg-color) !important;
+  }
+
+  select.form-control {
+    // Peertube uses a trick to display a triangle as dropdown icon for selects.
+    // But this tricks breaks selects that are not in a .peertube-select-container.
+    // So we must revert appearance:
+    appearance: revert !important;
+  }
+
+  .toolbar-buttons {
+    // Converse v11 removed the toggle_occupant button on the right.
+    // To add it back, we must ensure that this toolbar takes all the width, and
+    // that the toggle-occupants button is on the right.
+    flex-grow: 2;
+
+    .toggle-occupants {
+      // Cancelling the flex-grow from btn-group
+      flex-grow: 0 !important;
+
+      // This margin-left trick is to align the button on the right.
+      margin-left: auto !important;
+      order: 99;
+      white-space: nowrap;
+    }
+  }
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+#conversejs { // here we use the id have gretter priority
+  // These CSS are tricks: Converse v11 tries to hide the MUC when screen width is under 768px.
+  // We don't want that, so we cancel the d-none.
+  // FIXME: these hacks should be temporary, waiting for some improvement on Converse.
+  converse-muc-chatarea {
+    .chat-area.d-none {
+      display: flex !important;
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    converse-muc-sidebar {
+      // we must not use !important for flex, it would break resizing.
+      // That's why we use #conversejs insteand of .conversejs for this block.
+      flex: 0 0 min(400px, 50%);
+      min-width: min(200px, 50%) !important;
+
+      .occupants {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// When livechat has not many height, must reduce the emoji picker height.
+/* stylelint-disable-next-line no-duplicate-selectors */
+#conversejs {
+  &[livechat-converse-root-height="small"] {
+    converse-emoji-picker {
+      converse-emoji-picker-content {
+        .emoji-picker__lists {
+          height: 2em;
+        }
+      }
+    }
+  }
+
+  &[livechat-converse-root-height="medium"] {
+    converse-emoji-picker {
+      converse-emoji-picker-content {
+        .emoji-picker__lists {
+          height: 4em;
+        }
+      }
+    }
+  }
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+#conversejs {
+  converse-chat-content {
+    // Workaround for a regression in Firefox 136.
+    // See https://github.com/JohnXLivingston/peertube-plugin-livechat/issues/648
+    justify-content: normal !important;
+  }
+}

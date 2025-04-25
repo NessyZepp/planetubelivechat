@@ -1,0 +1,678 @@
+chat: Chat
+online_help: "Online help"
+open_chat: "Open chat"
+open_chat_new_window: "Open chat in a new window"
+close_chat: "Close chat"
+use_chat: "Use chat"
+use_chat_help: "If enabled, there will be a chat next to the video."
+share_chat_link: "Share chat link"
+read_only: "Read-only"
+show_scrollbarr: "Show the scrollbar"
+transparent_background: "Transparent background (for stream integration, with OBS
+  for example)"
+tips_for_streamers: |
+  Tips for streamers: To embed the chat in your video stream using OBS for example,
+  generate a read-only link and use it as a browser source.
+copy: "Copy"
+copied: "Copied"
+link_copied: "Link copied"
+error: "Error"
+open: "Open"
+use_current_theme_color: "Use current theme colors"
+generate_iframe: "Generate an iframe to embed the chat in a website"
+chat_for_live_stream: "Chat for live stream:"
+room_name: "Room name"
+room_description: "Room description"
+not_found: "Not found"
+video: "Video"
+channel: "Channel"
+last_activity: "Last activity"
+web: "Web"
+connect_using_xmpp: "Connect using XMPP"
+connect_using_xmpp_help: "You can connect to the room using an external XMPP account,
+  and your favorite XMPP client."
+
+important_note_title: "<h3>Important notes</h3>"
+important_note_text: |
+  You can find the plugin documentation here:
+  <a href="https://livingston.frama.io/peertube-plugin-livechat/" target="_blank">
+    Peertube Plugin Livechat documentation
+  </a>.
+
+diagnostic: |
+  Before asking for help, please use the diagnostic tool:
+  <a class="peertube-plugin-livechat-launch-diagnostic">Launch diagnostic</a>
+  (if this button is not opening a new window, please try to refresh the page).
+
+chat_title: "<h3>Chat</h3>"
+
+chat_terms_label: "Terms & Conditions"
+chat_terms_description: |
+  These terms & conditions will be shown to all users when then join chatrooms.
+  Streamers can also configure terms & conditions for their channels, that will be shown right after these global terms & conditions.
+
+list_rooms_label: "List existing rooms"
+list_rooms_description: |
+  <a class="peertube-plugin-livechat-prosody-list-rooms-btn">List rooms</a>
+
+federation_description: |
+  <h3>Federation</h3>
+  Following settings concern the federation with other Peertube instances,
+  and other fediverse softwares.
+
+federation_no_remote_chat_label: "Don't display remote chats"
+federation_no_remote_chat_description: |
+  By checking this setting, your instance will never display chats from remote videos.
+
+federation_dont_publish_remotely_label: "Don't publish chat information"
+federation_dont_publish_remotely_description: |
+  By checking this setting, your instance will not publish chat information on the fediverse.
+  Remote Peertube instances will not be aware that they are chat rooms associated to your videos.<br>
+  <b>Please note</b>: if you already had chats in progress, it is possible that the information has already been published.
+  You will have to wait for the next video update before the information is unpublished.
+  Also, if you disable this setting, you'll have to wait for the videos to be updated before the information are
+  published again. This update happens among others when a live event resumes or stops.<br>
+  <b>Please note</b>: this setting only affects the publication of information via the ActivityPub protocol.
+  It will not prevent a remote application from otherwise detecting the presence of chats, and trying to connect to it.
+
+external_auth_description: |
+  <h3>External authentication</h3>
+  For users that have no Peertube account, you can enable various authentication modes based on remote authentication providers.
+
+external_auth_custom_oidc_title: "<h4>OpenID Connect</h4>"
+
+external_auth_custom_oidc_label: "Use an OpenID Connect provider"
+external_auth_custom_oidc_description: |
+  You can configure an external OpenID Connect provider that could be used to log in to the chat.
+  Please refer to the documentation:
+  <a href="https://livingston.frama.io/peertube-plugin-livechat/documentation/admin/settings/" target="_blank">Settings</a>.
+
+external_auth_custom_oidc_button_label_label: "Label for the connection button"
+external_auth_custom_oidc_button_label_description: "This label will be displayed
+  to users, as the button label to authenticate with this OIDC provider."
+
+external_auth_custom_oidc_discovery_url_label: "Discovery URL"
+external_auth_oidc_client_id_label: "Client ID"
+external_auth_oidc_client_secret_label: "Client secret"
+external_auth_oidc_redirect_uris_info_description: |
+  <strong>Callback/Redirect URI:</strong>
+  If you want to configure authorized redirection URI on the external Application, please add this url:
+
+external_auth_google_oidc_label: 'Use Google'
+external_auth_google_oidc_description: |
+  Enabling this adds a "login with Google" button.
+  You have to configure a Google OAuth application.
+external_auth_facebook_oidc_label: 'Use Facebook'
+external_auth_facebook_oidc_description: |
+  Enabling this adds a "login with Facebook" button.
+  You have to configure a Facebook OAuth application.
+
+chat_behaviour_description: "<h3>Chat behaviour</h3>"
+
+room_type_label: "Room type"
+room_type_description: "You can choose here to have separate rooms for each video,
+  or to group them by channel."
+room_type_option_video: "Each video has its own webchat room"
+room_type_option_channel: "Webchat rooms are grouped by channel"
+
+auto_display_label: "Automatically open the chat"
+auto_display_description: "When watching a video, the chatbox will automatically open."
+
+open_blank_label: "Show the «open in new window» button"
+open_blank_description: "There will be a button for opening the web chat in a new
+  window."
+
+share_url_label: "Show the «share chat link» button"
+share_url_description: "There will be a button for sharing a chat url (could be used
+  for OBS integration, for example)."
+share_url_option_nobody: "Show for nobody"
+share_url_option_everyone: "Show for everyone"
+share_url_option_owner: "Show for the video owner"
+share_url_option_owner_moderators: "Show for the video owner and instance's moderators"
+
+per_live_video_label: "Users can activate the chat for their lives"
+per_live_video_description: "If checked, all live videos will have a checkbox in their
+  properties for enabling the web chat."
+
+per_live_video_warning_description: |
+  <span class="peertube-plugin-livechat-warning">
+    You have enabled the setting «Users can activate the chat for their lives».
+    It is redundant with the «Activate chat for all lives» setting.
+  </span>
+
+all_lives_label: "Activate chat for all lives"
+all_lives_description: "If checked, the chat will be enabled for all lives."
+
+all_non_lives_label: "Activate chat for all non-lives"
+all_non_lives_description: "If checked, the chat will be enabled for all video that
+  are not lives."
+
+videos_list_label: "Activate chat for these videos"
+videos_list_description: |
+  Videos UUIDs for which we want a web chat.
+  Can be non-live videos. One per line. <br />
+  You can add comments: everything after the # character will be stripped off, and empty lines ignored.<br />
+  Don't add private videos, the UUIDs will be sent to the frontend.
+
+no_anonymous_label: "Hide the chat for anonymous users"
+no_anonymous_description: |
+  If checked, anonymous Peertube users won't see the chat.
+  This feature is still experimental.
+  If you enabled it, it is highly recommended to also check "Don't publish chat information".
+  Otherwise, some third party tools could try to open the chat, and have unpredictable behaviours.
+
+auto_ban_anonymous_ip_label: "Ban anonymous user's IP when user is banned from a chatroom"
+auto_ban_anonymous_ip_description: |
+  By enabling this option, each time an anonymous user is banned from a chatroom, it's IP will also be banned from the chat server.
+  Warning: if your instance is open to registration, any user could create a trapped-room, invite users to join, and automatically ban all anonymous user's IPs.
+  The banned IP list is not stored, it will be cleared on server restart, or when you change some plugin's settings.
+  The banned IP are logged in the Prosody server log files, so server's administrators can eventually use some external tools (like fail2ban) to ban IPs more widely.
+
+theming_advanced_description: "<h3>Theming</h3>"
+
+avatar_set_label: "Avatar set"
+avatar_set_description: |
+  You can choose from several different sets the default avatars that will be used for chat users.
+  Please refer to the documentation:
+  <a href="https://livingston.frama.io/peertube-plugin-livechat/documentation/admin/settings/" target="_blank">Settings</a>.
+avatar_set_option_sepia: "Sepia (Peertube mascot)"
+avatar_set_option_cat: "Cats"
+avatar_set_option_bird: "Birds"
+avatar_set_option_fenec: "Fenecs (Mobilizon mascot)"
+avatar_set_option_abstract: Abstract
+avatar_set_option_legacy: "Legacy Sepia avatars (those included in previous plugin
+  versions)"
+avatar_set_option_none: None
+
+converse_theme_label: "ConverseJS theme"
+converse_theme_description: "Please choose the converseJS theme you want to use."
+converse_theme_option_peertube: "Peertube theme"
+converse_theme_option_default: "Default ConverseJS theme"
+converse_theme_option_cyberpunk: "ConverseJS Cyberpunk theme"
+
+autocolors_label: "Automatic color detection"
+autocolors_description: |
+  Try to autodetect colors from user's current theme.<br>
+  When this setting is enabled, the plugin tries to auto-detect colors to apply to the chat theme.<br>
+  If this is not correctly working for some of your Peertube theme, you can disable this option.
+  You can report the bug on the official
+  <a href="https://github.com/JohnXLivingston/peertube-plugin-livechat/issues" target="_blank">
+    issue tracker
+  </a>. Don't forget to specify which theme is not working.
+
+chat_style_label: "Webchat iframe style attribute"
+chat_style_description: |
+  Additional styles to be added on the iframe style attribute. <br>
+  Example: height:400px;
+
+prosody_advanced_description: "<h3>Chat server advanced settings</h3>"
+
+help_builtin_prosody_label: "Prosody server"
+help_builtin_prosody_description: |
+  This plugin uses the Prosody XMPP server to handle chat rooms.<br>
+  This plugin comes with a Prosody AppImage, that will be used to run the service.
+
+system_prosody_label: "Use system Prosody"
+system_prosody_description: |
+  Warning: don't check this setting if you are not sure of what you are doing.<br>
+  By checking this setting, your Peertube will use the Prosody server that comes with your system,
+  and not the embedded AppImage.<br>
+  Only use this if you encounter problems with the embedded Prosody.
+
+disable_websocket_label: "Disable Websocket"
+disable_websocket_description: |
+  With Peertube &gt;= 5.0.0, this plugin try to use Websocket connection for chatting.
+  If the user's browser or connection is incompatible, the browser will automatically fall back on the BOSH protocol.
+  <br>
+  But in rare case, this can fail. For example, if you have a reverse proxy in front of Peertube that does not
+  allow Websocket connection for plugins.
+  In this case, you can check this setting to disable Websocket connections.
+
+prosody_port_label: "Prosody port"
+prosody_port_description: |
+  The port that will be used by the Prosody server.<br>
+  Change it if this port is already in use on your server.<br>
+  You can close this port on your firewall, it will not be accessed from the outer world.<br>
+  Note: this might change in a near future, as it is planned to add a feature to activate external connections.
+
+prosody_peertube_uri_label: "Peertube url for API calls"
+prosody_peertube_uri_description: |
+  Please let this setting empty if you don't know what you are doing.<br>
+  In some rare cases, Prosody can't call Peertube's API from its public URI.
+  You can use this field to customize Peertube's URI for Prosody modules
+  (for example, with «http://localhost:9000» or «http://127.0.0.1:9000»).
+
+prosody_muc_log_by_default_label: "Log rooms content by default"
+prosody_muc_log_by_default_description: |
+  If checked, room contents will be saved by default.
+  Any user who joins a room will see what was written before they joins.<br>
+  Please note that it is always possible to enable/disable the content
+  archiving for a specific room, by editing its properties.
+
+prosody_muc_expiration_label: "Room logs expiration"
+prosody_muc_expiration_description: |
+  You can choose here how long the chatting room's content is kept by the server. The value can be:
+  <ul>
+      <li><b>60</b>: the content will be saved for 60 <b>seconds</b>. You can replace 60 by any integer value.</li>
+      <li><b>1d</b>: the content will be saved for 1 <b>day</b>. You can replace 1 by any integer value.</li>
+      <li><b>1w</b>: the content will be saved for 1 <b>week</b>. You can replace 1 by any integer value.</li>
+      <li><b>1m</b>: the content will be saved for 1 <b>month</b>. You can replace 1 by any integer value.</li>
+      <li><b>1y</b>: the content will be saved for 1 <b>year</b>. You can replace 1 by any integer value.</li>
+      <li><b>never</b>: the content will never expire, and will be kept forever.</li>
+  </ul>
+
+prosody_room_allow_s2s_label: "Enable connection to room using external XMPP accounts"
+prosody_room_allow_s2s_description: |
+  By enabling this option, it will be possible to connect to rooms using external XMPP accounts and XMPP clients.<br>
+  <span class="peertube-plugin-livechat-warning">
+    <b>Warning</b>, enabling this option can request extra server and DNS configuration.
+  </span>
+  Please refer to the documentation:
+  <a href="https://livingston.frama.io/peertube-plugin-livechat/documentation/admin/advanced/xmpp_clients/" target="_blank">
+    Enable external XMPP account connections.
+  </a>
+
+prosody_s2s_port_label: "Prosody server to server port"
+prosody_s2s_port_description: |
+  The port that will be used for XMPP s2s (server to server) connections.<br>
+  You should use the standard 5269 port.
+  Otherwise you should <a href="https://prosody.im/doc/s2s">
+    setup a specific DNS record
+  </a>.
+
+prosody_s2s_interfaces_label: "Server to server network interfaces"
+prosody_s2s_interfaces_description: |
+  The network interfaces to listen on for server to server connections.<br>
+  List of IP to listen on, coma separated (spaces will be stripped).<br>
+  You can use «*» to listen on all IPv4 interfaces, and «::» for all IPv6.<br>
+  Examples:
+  <ul>
+    <li>*, ::</li>
+    <li>*</li>
+    <li>127.0.0.1, ::1</li>
+    <li>172.18.0.42</li>
+  </ul>
+
+prosody_certificates_dir_label: "Certificates folder"
+prosody_certificates_dir_description: |
+  If this field is empty, the plugin will generate and use self-signed certificates.<br>
+  If you want to use other certificates, just specify here the folder where
+  Prosody can find them. Note: the "peertube" user must have read access to this folder.
+
+prosody_c2s_label: "Enable client to server connections"
+prosody_c2s_description: |
+  Enable XMPP clients to connect to the built-in Prosody server.<br>
+  This option alone only allows connections from localhost clients.
+
+prosody_c2s_port_label: "Prosody client to server port"
+prosody_c2s_port_description: |
+  The port that will be used by the c2s module of the built-in Prosody server.<br>
+  XMPP clients shall use this port to connect.<br>
+  Change it if this port is already in use on your server.<br>
+  You can keep this port closed on your firewall for now, it will not be accessed from the outer world.<br>
+  Note: this might change in a near future, as it is planned to add a feature to activate external connections.
+
+
+prosody_c2s_interfaces_label: "Client to server network interfaces"
+prosody_c2s_interfaces_description: |
+  The network interfaces to listen on for client to server connections.<br>
+  This setting is provided for advanced users. Don't change this setting if you don't fully understand what it means.<br>
+  List of IP to listen on, coma separated (spaces will be stripped).<br>
+  You can use «*» to listen on all IPv4 interfaces, and «::» for all IPv6.<br>
+  Examples:
+  <ul>
+    <li>*, ::</li>
+    <li>*</li>
+    <li>127.0.0.1, ::1</li>
+    <li>127.0.0.1, ::1, 172.18.0.42</li>
+  </ul>
+
+prosody_components_label: "Enable custom Prosody external components"
+prosody_components_description: |
+  Enable the use of external XMPP components.<br>
+  This option alone only allows connections from localhost.
+  You have to setup the listening interfaces and open the port on your firewall to make it available from remote servers.<br>
+  This feature can, for example, be used to connect some bots to the chatting rooms.
+
+prosody_components_port_label: "Prosody external components port"
+prosody_components_port_description: |
+  The port that will be used by XMPP components to connect to the Prosody server.<br>
+  Change it if this port is already in use on your server.<br>
+  You can keep this port closed on your firewall if you don't allow access on interfaces other than localhost.
+
+prosody_components_interfaces_label: "Prosody external components network interfaces"
+prosody_components_interfaces_description: |
+  The network interfaces to listen on for external components connections.<br>
+  List of IP to listen on, coma separated (spaces will be stripped).<br>
+  You can use «*» to listen on all IPv4 interfaces, and «::» for all IPv6.<br>
+  Examples:
+  <ul>
+    <li>*, ::</li>
+    <li>*</li>
+    <li>127.0.0.1, ::1</li>
+    <li>172.18.0.42</li>
+  </ul>
+
+prosody_components_list_label: "External components"
+prosody_components_list_description: |
+  The external components to declare:
+  <ul>
+    <li>One per line.</li>
+    <li>Use the format «component_name:component_secret» (spaces will be trimmed).</li>
+    <li>You can add comments: everything after the # character will be stripped off, and empty lines ignored.</li>
+    <li>The name can only contain latin alphanumeric characters and dots.</li>
+    <li>
+      If the name contains only alphanumeric characters, it will be suffixed with the XMPP domain.
+      For example, «bridge» will become «bridge.your_domain.tld».
+      You can also specify a full domain name, but you have to make sure to configure your DNS correctly.
+    </li>
+    <li>Only use alphanumeric characters in the secret passphrase (use at least 15 characters).</li>
+  </ul>
+
+experimental_warning: |
+  <b class="peertube-plugin-livechat-experimental">Experimental feature:</b> this feature is still experimental.
+
+configuration_description: |
+  <h3>Channel advanced configuration</h3>
+  Following settings concern the advanced channel options:
+  users will be able to add some customization on their channels,
+  activate the moderation bot, ...
+
+disable_channel_configuration_label: "Disable the advanced channel configuration and
+  the chatbot"
+
+save: "Save"
+cancel: "Cancel"
+successfully_saved: "Successfully saved"
+menu_configuration_label: "Chatrooms"
+livechat_configuration_title: "Configure your live's chatrooms"
+livechat_configuration_desc: "Here you can configure some advanced options for chatrooms
+  associated to your live streams."
+livechat_configuration_please_select: "Please select bellow one of your channel, to
+  setup its chatting options."
+livechat_configuration_channel_title: "Channel options"
+livechat_configuration_channel_desc: "You can setup here some options for this channel
+  (moderation policies, ...)."
+livechat_configuration_channel_slow_mode_label: "Slow mode"
+livechat_configuration_channel_slow_mode_desc: |
+  Slow mode default value:
+  <ul>
+    <li>0: slow mode disabled</li>
+    <li>Any positive integer: users can send a message every X seconds (moderators are not limited)</li>
+  </ul>
+livechat_configuration_channel_enable_bot_label: "Enable moderation bot"
+livechat_configuration_channel_bot_options_title: "Moderation bot options"
+livechat_configuration_channel_forbidden_words_label: "Forbidden words or expressions"
+livechat_configuration_channel_forbidden_words_desc: |
+  You can configure some words that will be automatically moderated by the bot (messages containing such words will be instantly deleted).
+  You can also add an optional reason that will be displayed at the place of deleted messages.
+  Several examples are provided on the documentation page.
+livechat_configuration_channel_forbidden_words_desc2: |
+  One word or expression per line. If you put multiple words on one line, it will only match messages containing the whole sequence.
+livechat_configuration_channel_retractation_reason_label: "Reason"
+livechat_configuration_channel_retractation_reason_desc: "Reason to display besides
+  deleted messages"
+livechat_configuration_channel_forbidden_words_regexp_label: "Consider as regular
+  expressions"
+livechat_configuration_channel_forbidden_words_regexp_desc: "By checking this option,
+  you can use regular expressions."
+livechat_configuration_channel_forbidden_words_label_label: "Label"
+livechat_configuration_channel_forbidden_words_label_desc: "Label for this forbidden
+  words rule"
+livechat_configuration_applytomoderators_label: "Also moderate messages from moderators"
+livechat_configuration_applytomoderators_desc: |
+  By default, moderator messages will not be affected by this feature.
+  By checking this option, messages from moderators will also be deleted.
+livechat_configuration_channel_forbidden_words_comments_label: "Comments"
+livechat_configuration_channel_forbidden_words_comments_desc: |
+  You can add here some comments about this rule, to remember how and why you created it.
+  These comments are purely indicative, and have no influence on the bot's behavior.
+livechat_configuration_channel_quote_label: "Timer"
+livechat_configuration_channel_quote_desc: |
+  You can configure several timers that will send messages at regular interval.
+  These messages will be sent by the bot every X minutes.
+  You can for example make the bot sent some sponsoring information every 5 minutes.
+livechat_configuration_channel_quote_label2: "Messages"
+livechat_configuration_channel_quote_desc2: |
+  One message per line.
+  If multiple messages, it will pick one randomly every X minutes.
+livechat_configuration_channel_quote_delay_label: "Send every X minutes"
+livechat_configuration_channel_quote_delay_desc: |
+  The bot will post the message every X minutes.
+livechat_configuration_channel_command_label: "Bot command"
+livechat_configuration_channel_command_desc: |
+  You can configure the bot to respond to commands.
+  A command is a message starting with a "!", like for example "!help" that calls the "help" command.
+livechat_configuration_channel_command_cmd_label: "Command"
+livechat_configuration_channel_command_cmd_desc: |
+  The command, without the starting "!". For example "help", "sponsor", ...
+livechat_configuration_channel_command_message_label: "Message"
+livechat_configuration_channel_command_message_desc: "The message to send."
+livechat_configuration_channel_for_more_info: |
+  For more information about how to configure this feature, please refer to the documentation by clicking on the help button.
+livechat_configuration_channel_banned_jids_label: "Banned users and patterns"
+livechat_configuration_channel_bot_nickname: "Bot nickname"
+
+validation_error: "There was an error during validation."
+invalid_value: "Invalid value."
+invalid_value_missing: "This value is required."
+invalid_value_wrong_type: "Value is of the wrong type."
+invalid_value_wrong_format: "Value is in the wrong format."
+invalid_value_not_in_range: "Value is not in authorized range."
+invalid_value_file_too_big: "File size is too big (max size: %s)."
+invalid_value_duplicate: "Duplicate value"
+invalid_value_too_long: "Value too long"
+too_many_entries: "Too many entries"
+
+slow_mode_info: "Slow mode is enabled, users can send a message every %1$s seconds."
+
+chatroom_not_accessible: "This chatroom does not exist, or is not accessible to you."
+
+login_using_external_account: "Log in using an external account"
+login_remote_peertube: "Log in using an account on another Peertube instance:"
+login_remote_peertube_url: "Your Peertube instance URL"
+login_remote_peertube_searching: "Searching the video on the Peertube instance..."
+login_remote_peertube_url_invalid: "Invalid Peertube URL."
+login_remote_peertube_no_livechat: "The livechat plugin is not installed on this Peertube
+  instance."
+login_remote_peertube_video_not_found: "This video is not available on this Peertube
+  instance."
+login_remote_peertube_video_not_found_try_anyway: "In some cases, the video can still
+  be retrieved if you connect to the remote instance."
+login_remote_peertube_video_not_found_try_anyway_button: "Try anyway to open the video
+  on the Peertube instance"
+login_remote_peertube_video_open_failed: "Your browser has blocked the opening on
+  the remote instance, please try to open manually this link:"
+login_external_auth_alert_message: "Authentication failed"
+
+tasks: 'Tasks'
+task_list_create: 'Create new task list:'
+task_list_create_error: 'Error when saving the task list'
+task_list_name: 'Task list name'
+task_list_delete: 'Delete task list'
+task_list_delete_confirm: 'Are you sure you want to delete this task list?'
+task_create: 'Create a new task'
+task_name: 'Task name'
+task_description: 'Description'
+task_delete: 'Delete task'
+task_delete_confirm: 'Are you sure you want to delete this task?'
+task_list_pick_title: 'Please choose a task list'
+task_list_pick_empty: 'There is no task list for now, please first create one'
+task_list_pick_message: |
+  Once you have chosen a task list, a new task will be created.
+  To see the task, open the task application using the top menu.
+  More information in the livechat plugin documentation.
+
+promote: 'Become moderator'
+
+livechat_configuration_channel_emojis_title: 'Channel emojis'
+livechat_configuration_channel_emojis_desc: |
+  You can configure custom emojis for your channel.
+  These emojis will be available in the emoji picker.
+  Users can also use them by with their short name (for example by writing ":shortname:").
+livechat_emojis_shortname: 'Short name'
+livechat_emojis_shortname_desc: |
+  You can use emojis in the chat using ":shortname:".
+  The short name can start and/or end by a colon (:), and only contain alphanumerical characters, underscores and hyphens.
+  It is strongly recommended to start them by a colon, so that users can use autocompletion (by typing ":" then press TAB).
+livechat_emojis_file: 'File'
+livechat_emojis_file_desc: |
+  The emoji file.
+
+action_import: Import
+action_export: Export
+action_import_emojis_info: If imported data are okay, don't forgot to save the form.
+
+action_add_entry: Add an entry
+action_remove_entry: Remove this entry
+action_remove_entry_confirm: Are you sure you want to remove this entry?
+
+loading_error: An error occured while loading data.
+share_chat_embed: Embed
+share_chat_peertube_tips: This link will open the chat within the Peertube interface.
+share_chat_dock: Dock
+share_chat_dock_tips: |
+  You can generate a link that will open the chat in full page, logged in with your Peertube account.
+  This can be use, for example, to have a web dock in your OBS, so you can read and interact with the chat directly from OBS.
+  Don't share this link to anyone, as it would allow them to connect as yourself.
+  Please find bellow the list of authentication token you have already generated.
+  You can create a new one, or revoke any previous token.
+  Please note that these tokens have no expiration date.
+
+token_label: Label
+token_password: Password token
+token_date: Date
+token_action_create: Create a new token
+token_action_revoke: Revoke the token
+token_default_label: Token generated from the web interface
+token_action_revoke_confirm: Are you sure you want to revoke this token?
+auth_description: |
+  <h3>Authentication</h3>
+livechat_token_disabled_label: 'Disable livechat tokens'
+livechat_token_disabled_description: |
+  Users can generate long term tokens to connect to the chat.
+  These tokens can for example be used to include the chat in OBS web docks.
+  Check <a href="https://livingston.frama.io/peertube-plugin-livechat/documentation/user/obs" target="_blank">the documentation</a> for more information.
+  You can disable this feature by checking this setting.
+
+muted_anonymous_message: Only registered users can send messages.
+livechat_configuration_channel_mute_anonymous_label: "Mute anonymous users"
+livechat_configuration_channel_mute_anonymous_desc: |
+  Default value for new chatrooms.
+  For existing chatrooms, you can change the feature in the room configuration form.
+  When this feature is enabled, anonymous users can only read the chat, and not send messages.
+livechat_configuration_channel_terms_label: "Channel's chat terms & conditions"
+livechat_configuration_channel_terms_desc: |
+  You can configure a "terms & conditions" message that will be shown to users joining your chatrooms.
+
+new_poll: Create a new poll
+poll: Poll
+poll_title: New poll
+poll_instructions: Complete and submit this form to create a new poll. This will end
+  and replace any existing poll.
+poll_question: Question
+poll_duration: Poll duration (in minutes)
+poll_anonymous_results: Anonymous results
+poll_choice_n: 'Choice {{N}}:'
+poll_end: 'Poll ends at:'
+poll_vote_instructions: "To vote, click on your choice or send a message with an exclamation
+  mark followed by your choice number (Example: !1)."
+poll_vote_instructions_xmpp: "Send a message with an exclamation mark followed by
+  your choice number to vote. Example: !1"
+poll_is_over: This poll is now over.
+poll_choice_invalid: This choice is not valid.
+poll_anonymous_vote_ok: Your vote is taken into account. Votes are anonymous, they
+  will not be shown to other participants.
+poll_vote_ok: Your vote has been taking into account, the counters will be updated
+  in a moment.
+
+moderation_delay: Moderation delay
+livechat_configuration_channel_moderation_delay_desc: |
+  Moderation delay default value:
+  <ul>
+    <li>0: moderation delay disabled</li>
+    <li>Any positive integer: messages will be delayed for X seconds for non-moderator participants, allowing moderators to delete message before any user can read it.</li>
+  </ul>
+
+livechat_configuration_channel_anonymize_moderation_label: "Anonymize moderation actions"
+livechat_configuration_channel_anonymize_moderation_desc: |
+  Anonymize moderation actions default value for new rooms.
+  When this is enabled, moderation actions will be anonymized, to avoid disclosing who is banning/kicking/… occupants.
+
+moderator_notes: Moderation notes
+moderator_notes_create_error: 'Error when saving the note'
+moderator_note_create: 'Create a new note'
+moderator_note_description: 'Description'
+moderator_note_delete: 'Delete note'
+moderator_note_delete_confirm: 'Are you sure you want to delete this note?'
+moderator_note_create_for_participant: 'Create a new note'
+moderator_note_search_for_participant: 'Search notes'
+moderator_note_filters: 'Search filters'
+moderator_note_original_nick: 'Nickname of the participant at the time of the note
+  creation'
+
+search_occupant_message: 'Search all messages'
+message_search: 'Message search'
+message_search_original_nick: Nickname of the participant when the message was sent
+
+prosody_firewall_label: 'Enable Prosody mod_firewall'
+prosody_firewall_description: |
+  You can enable <a href="https://modules.prosody.im/mod_firewall" target="_blank">mod_firewall</a> on your Prosody server.
+  For more information, please check <a href="https://livingston.frama.io/peertube-plugin-livechat/documentation/admin/mod_firewall/" target="_blank">the documentation</a>.
+prosody_firewall_configure_button: |
+  <a class="peertube-button-link orange-button secondary-button" href="/p/livechat/admin/firewall" target="_blank">Configure mod_firewall</a>
+
+prosody_firewall_configuration: Prosody mod_firewall configuration
+prosody_firewall_configuration_help: |
+  Here you can configure Prosody <a href="https://modules.prosody.im/mod_firewall" target="_blank">mod_firewall</a> module.
+  You can create multiple configuration files bellow, and change their order.
+  Don't hesitate to share your configurations with the community (for example by adding some examples in the plugin documentation).
+prosody_firewall_disabled_warning: |
+  Warning: mod_firewall is disabled in the livechat <a href="/admin/plugins/show/peertube-plugin-livechat" target="_blank">plugin settings</a>, you have to enable it if you want this configuration to be taken into account.
+prosody_firewall_file_enabled: Enabled
+prosody_firewall_name: Name
+prosody_firewall_name_desc: |
+  Can only contain: alphanumerical characters, underscores and hyphens.
+  Scripts will be loaded in alphabetical order.
+prosody_firewall_content: File content
+
+emoji_only_info: Emoji only mode is enabled, you can only use emoji in your messages.
+emoji_only_mode_title: Emojis only mode
+emoji_only_mode_desc_1: |
+  You can enable an "Emojy only mode" in your chatrooms.
+  When this mode is enabled, participants can only send emojis (standard, or channel custom emojis).
+  Moderators are not affected by this limitation.
+emoji_only_mode_desc_2: |
+  This mode can be usefull for example:
+  <ul>
+    <li>To avoid spam or offensive message when you are not here to moderate.</li>
+    <li>When there are too many speaking participants, and you can't no more moderate correctly.</li>
+  </ul>
+emoji_only_mode_desc_3: |
+  To enable or disable this mode, you can use the room configuration form.
+  If you want to enable it for all your chatrooms at once, you can use the button bellow.
+emoji_only_enable_all_rooms: Enable the emoji only mode on all channel's chatrooms
+
+livechat_configuration_channel_special_chars_label: "Forbid special characters"
+livechat_configuration_channel_special_chars_desc: |
+  By enabling this option, the moderation bot will automatically delete messages containing more than X special characters.
+  Special characters are those that don't fit into one of these categories: letters, numbers, punctuation symbols, currency symbols, emojis.
+livechat_configuration_channel_special_chars_tolerance_label: Tolerance
+livechat_configuration_channel_special_chars_tolerance_desc: Number of special characters
+  to accept in a message without deleting it.
+
+feature_comes_with: This feature comes with the livechat plugin version X.X.X.
+
+livechat_configuration_channel_no_duplicate_label: "No duplicate message"
+livechat_configuration_channel_no_duplicate_desc: |
+  By enabling this options, the moderation bot will automatically moderate duplicate messages.
+  That means if a user send the same message twice within X seconds, the second message will be deleted.
+livechat_configuration_channel_no_duplicate_delay_label: Time interval
+livechat_configuration_channel_no_duplicate_delay_desc: |
+  The interval, in seconds, during which a user can't send again the same message.
+
+announcements_message_type: Message type
+announcements_message_type_standard: Standard
+announcements_message_type_announcement: Announcement
+announcements_message_type_highlight: Highlight
+announcements_message_type_warning: Warning

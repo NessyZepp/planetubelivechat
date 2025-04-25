@@ -1,0 +1,49 @@
+{
+  "name": "@converse/headless",
+  "version": "10.1.7",
+  "description": "Converse.js Headless build",
+  "author": "JC Brand <jc@opkode.com>",
+  "contributors": [
+    "cmrd Senya <senya@riseup.net>"
+  ],
+  "homepage": "https://conversejs.org",
+  "license": "MPL-2.0",
+  "main": "index.js",
+  "types": "types/index.d.ts",
+  "module": "index.js",
+  "keywords": [
+    "converse.js",
+    "XMPP",
+    "Jabber",
+    "chat",
+    "messaging",
+    "chatrooms",
+    "webchat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conversejs/converse.js.git",
+    "directory": "src/headless"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/conversejs/converse.js/issues"
+  },
+  "dependencies": {
+    "@converse/openpromise": "^0.0.1",
+    "@converse/skeletor": "conversejs/skeletor#7e1cbeba0161bfe91d709a22deaa70e4daa0cd39",
+    "dayjs": "^1.11.8",
+    "dompurify": "^3.0.8",
+    "filesize": "^10.0.7",
+    "localforage-webextensionstorage-driver": "^3.0.0",
+    "lodash-es": "^4.17.21",
+    "pluggable.js": "3.0.1",
+    "sizzle": "^2.3.5",
+    "sprintf-js": "^1.1.2",
+    "strophe.js": "strophe/strophejs#4a77b265c3b5da882b8f805016a0c587dbd63e3c",
+    "urijs": "^1.19.10"
+  },
+  "devDependencies": {}
+}

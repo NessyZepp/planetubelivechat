@@ -1,0 +1,57 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.diagVideo = diagVideo;
+const utils_1 = require("./utils");
+async function diagVideo(test, { settingsManager }) {
+    const result = (0, utils_1.newResult)(test);
+    result.label = 'Webchat activated on videos';
+    const videoSettings = await settingsManager.getSettings([
+        'chat-auto-display',
+        'chat-open-blank',
+        'chat-per-live-video',
+        'chat-all-lives',
+        'chat-all-non-lives',
+        'chat-videos-list'
+    ]);
+    if (videoSettings['chat-auto-display']) {
+        result.messages.push('Chat will open automatically');
+    }
+    else {
+        result.messages.push('Chat will not open automatically');
+    }
+    if (videoSettings['chat-open-blank']) {
+        result.messages.push('Displaying «open in new window» button');
+    }
+    let atLeastOne = false;
+    if (videoSettings['chat-per-live-video']) {
+        result.messages.push('Chat can be enabled on live videos.');
+        atLeastOne = true;
+    }
+    if (videoSettings['chat-all-lives']) {
+        result.messages.push('Chat is enabled for all lives.');
+        atLeastOne = true;
+    }
+    if (videoSettings['chat-all-non-lives']) {
+        result.messages.push('Chat is enabled for all non-lives.');
+        atLeastOne = true;
+    }
+    if ((videoSettings['chat-videos-list'] ?? '') !== '') {
+        const lines = (videoSettings['chat-videos-list'] ?? '').split('\n');
+        for (let i = 0; i < lines.length; i++) {
+            if (/^\s*(-|\w)+\s*($|#)/.test(lines[i])) {
+                result.messages.push('Chat is activated for a specific videos.');
+                atLeastOne = true;
+            }
+        }
+    }
+    if (atLeastOne) {
+        result.ok = true;
+        result.next = 'prosody';
+    }
+    else {
+        result.ok = false;
+        result.messages.push('Chat is activate for no video.');
+    }
+    return result;
+}
+//# sourceMappingURL=video.js.map

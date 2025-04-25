@@ -1,0 +1,64 @@
+/*
+ * SPDX-FileCopyrightText: 2024 John Livingston <https://www.john-livingston.fr/>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+.conversejs {
+  livechat-converse-muc-task-lists {
+    padding: 1em;
+    width: 100%;
+  }
+
+  livechat-converse-muc-task-list {
+    width: 100%;
+
+    .task-list-line {
+      border: 1px solid var(--chatroom-head-bg-color);
+      border-radius: 4px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      padding: 0.25em;
+      column-gap: 0.25em;
+      width: 100%;
+
+      .task-list-toggle-tasks,
+      .task-list-action {
+        background: unset;
+        border: 0;
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+      }
+
+      .task-list-name {
+        flex-grow: 2;
+
+        label {
+          // Cancelling the Peertube margin-bottom on labels
+          margin: 0;
+        }
+
+        form {
+          display: flex;
+          flex-flow: row nowrap;
+          column-gap: 0.25em;
+
+          input[type="text"] {
+            flex-grow: 2;
+          }
+        }
+      }
+    }
+
+    .task-list-tasks {
+      padding-left: 2em;
+      width: 100%;
+    }
+
+    .task-list-add-task {
+      padding: 0.25em 0.25em 0.25em 2em;
+      width: 100%;
+    }
+  }
+}
